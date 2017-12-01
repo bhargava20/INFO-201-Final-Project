@@ -11,7 +11,7 @@ file2 <- read.csv("data/Seattle_Police_Department_911_Incident_Response.csv.bz2"
 file <- arrange(file, -yr_built)
 arr_file <- file%>%group_by(yr_built)%>%summarise(count=n())%>% arrange(-count)
 
-# Top 3 years with the highest constructions
+# Top 3 years with the highest constructions.
 year_built1 <- arr_file[1,]
 year_built2 <- arr_file[2,]
 year_built3 <- arr_file[3,]
