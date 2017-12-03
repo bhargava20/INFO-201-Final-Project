@@ -11,25 +11,31 @@ file2 <- read.csv("data/Seattle_Police_Department_911_Incident_Response.csv.bz2"
 file <- arrange(file, -yr_built)
 arr_file <- file%>%group_by(yr_built)%>%summarise(count=n())%>% arrange(-count)
 
-# Top 3 years with the highest constructions.
+# Top 3 years with the highest constructions
 year_built1 <- arr_file[1,]
 year_built2 <- arr_file[2,]
 year_built3 <- arr_file[3,]
 
-# The prefrence of number of bedrooms during the highest construction years.
-bed_high1 <- file%>%filter(year_built1$yr_built==yr_built)%>%group_by(bedrooms)%>%summarise(count=n())%>%filter(count == max(count))
-bed_high2 <- file%>%filter(year_built2$yr_built==yr_built)%>%group_by(bedrooms)%>%summarise(count=n())%>%filter(count == max(count))
-bed_high3 <- file%>%filter(year_built3$yr_built==yr_built)%>%group_by(bedrooms)%>%summarise(count=n())%>%filter(count == max(count))
+# The prefrence of number of bedrooms during the a specific construction years.
+bed <- function(yr){
+  bed.yr <- file%>%filter(yr == yr_built)%>%group_by(bedrooms)%>%summarise(count = n())%>%filter(count == max(count)) %>% select(bedrooms)
+  
+  return(bed.yr)
+}
 
-# The prefrence of number of bathrooms during the highest construction years.
-bath_high1 <- file%>%filter(year_built1$yr_built==yr_built)%>%group_by(bathrooms)%>%summarise(count=n())%>%filter(count == max(count))
-bath_high2 <- file%>%filter(year_built2$yr_built==yr_built)%>%group_by(bathrooms)%>%summarise(count=n())%>%filter(count == max(count))
-bath_high3 <- file%>%filter(year_built3$yr_built==yr_built)%>%group_by(bathrooms)%>%summarise(count=n())%>%filter(count == max(count))
+# The prefrence of number of bathrooms during a specific construction years.
+bath <- function(yr){
+  bath.yr <- file%>%filter(yr == yr_built)%>%group_by(bathrooms)%>%summarise(count = n())%>%filter(count == max(count)) %>% select(bathrooms)
+  
+  return(bath.yr)
+}
 
-# The prefrence for number of floors during the highest construction years.
-floor_high1 <- file%>%filter(year_built1$yr_built==yr_built)%>%group_by(floors)%>%summarise(count=n())%>%filter(count == max(count))
-floor_high2 <- file%>%filter(year_built2$yr_built==yr_built)%>%group_by(floors)%>%summarise(count=n())%>%filter(count == max(count))
-floor_high3 <- file%>%filter(year_built3$yr_built==yr_built)%>%group_by(floors)%>%summarise(count=n())%>%filter(count == max(count))
+# The prefrence for number of floors during a specific year construction years.
+floor <- function(yr){
+  floor.yr <- file%>%filter(yr == yr_built)%>%group_by(floors)%>%summarise(count = n())%>%filter(count == max(count)) %>% select(floors)
+  
+  return(floor.yr)
+}
 
 # Relation between Zipcodes and the Average Grade given to the buildings in that specific zipcode
 
