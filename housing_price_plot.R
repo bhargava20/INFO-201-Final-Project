@@ -22,7 +22,7 @@ plot_prices <- function(housing_data,input_zipcode){
   x <- list(title = "date")
   y <- list(title = "price")
   plot <- plot_ly(filtered_data,x=filtered_data$date,y=filtered_data$price,type = "scatter",color = "red") %>% 
-    layout(xaxis = x, yaxis = y,margin = list(b = 160))
+    layout(title = "Housing prices based on zipcode",xaxis = x, yaxis = y,margin = list(b = 160))
   
    return(plot)
 }
