@@ -7,11 +7,17 @@ source("Summary info.R")
 #Processes data in such a way to enable visualization in ui.R
 shinyServer(function(input, output){
   kc_house_data <- read.csv("data/kc_house_data.csv",header = T)
-  
+  kc_house_data$date <- substring(kc_house_data$date,0,8)
+  date <- kc_house_data$date
+  year <- substring(date,0,4)
+  month <- substring(date,5,6)
+  day <- substring(date,7,8)
+  kc_house_data$date <- paste(year,"-",month,"-",day)
+  kc_house_data$date <- as.Date(kc_house_data$date, format = "%Y - %m - %d")
 
  
   #Generates a plot
-  output$plot <- renderPlot({
+  output$plot <- renderPlotly({
     p <- plot_prices(kc_house_data, input$zip_code)
     
     print(p)

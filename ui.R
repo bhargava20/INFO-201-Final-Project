@@ -14,7 +14,7 @@ shinyUI(fluidPage(
   p("This dataset contains houses sold in King County from May 2014 to May 2015"),
 
   mainPanel(
-    plotOutput('plot'), 
+    plotlyOutput('plot'), 
     textInput("zip_code", "Zip Code:", value = 98178, placeholder = "ex. 98178"),
     textOutput('plot_error_msg')
   ),

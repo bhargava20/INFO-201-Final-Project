@@ -19,8 +19,11 @@ plot_prices <- function(housing_data,input_zipcode){
   filtered_data <- housing_data %>%
     filter(zipcode == input_zipcode) %>%
     select(date,price,zipcode)
-    plot <- ggplot(filtered_data,aes(x=filtered_data$date,y=filtered_data$price))+geom_line()+
-      ggtitle("Housing prices based on zipcode")+xlab("date")+ylab("price")
-    return(plot)
+  x <- list(title = "date")
+  y <- list(title = "price")
+  plot <- plot_ly(filtered_data,x=filtered_data$date,y=filtered_data$price,type = "scatter",color = "red") %>% 
+    layout(xaxis = x, yaxis = y,margin = list(b = 160))
+  
+   return(plot)
 }
 
