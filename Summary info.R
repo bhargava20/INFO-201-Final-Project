@@ -5,10 +5,7 @@ library("lubridate")
 
 # Reading the csv files
 file <- read.csv("data/kc_house_data.csv.bz2", stringsAsFactors = FALSE)
-file2 <- read.csv("data/Seattle_Police_Department_911_Incident_Response.csv.bz2", stringsAsFactors = FALSE)
-
-# Smaller crimedata csv file
-file2 <- file2%>%select(Event.Clearance.Date,Hundred.Block.Location)
+file2 <- read.csv("crime_data.csv", stringsAsFactors = FALSE)
 
 #preparation for the following variables
 file <- arrange(file, -yr_built)
