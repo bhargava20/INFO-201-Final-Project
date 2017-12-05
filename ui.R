@@ -2,8 +2,7 @@
 library(shiny)
 library(dplyr)
 
-# source("Summary info.R")
-# source("housing_price_plot.R")
+
 
 #Generates an interactive User Interface with input panels
 shinyUI(fluidPage(

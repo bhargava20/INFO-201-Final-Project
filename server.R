@@ -2,6 +2,7 @@
 library(shiny)
 library(ggplot2)
 source("housing_price_plot.R")
+source("Summary info.R")
 
 #Processes data in such a way to enable visualization in ui.R
 shinyServer(function(input, output){
