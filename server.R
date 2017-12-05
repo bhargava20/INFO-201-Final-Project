@@ -1,6 +1,7 @@
 #Loads necessary libraries
 library(shiny)
 library(ggplot2)
+library(plotly)
 source("housing_price_plot.R")
 source("Summary info.R")
 

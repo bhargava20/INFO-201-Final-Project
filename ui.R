@@ -1,6 +1,7 @@
 #loads necessary libraries
 library(shiny)
 library(dplyr)
+library(plotly)
 
 
 
