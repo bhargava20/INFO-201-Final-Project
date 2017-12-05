@@ -36,17 +36,16 @@ shinyServer(function(input, output){
   })
   
   
-  output$qual<- renderText({
-    paste0("The average building quality in zip code ", input$zip_code_qual, "is ", high_zip(input$zip_code_qual))
-  })
+
   
-  output$qual_error_msg <- renderText({
+  output$qual <- renderText({
     zips <- kc_house_data %>% select(zipcode) %>% unique()
     zips <- zips$zipcode
     if(input$zip_code_qual %in% zips){
-      ""
+      paste0("The average building quality in zip code ", input$zip_code_qual, " is ", high_zip(input$zip_code_qual))
+    
     } else {
-      paste0("Sorry, we have no data on ", input$zip_code)
+      paste0("Sorry, we have no data on ", input$zip_code_qual)
     }
     
   })

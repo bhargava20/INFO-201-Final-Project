@@ -3,6 +3,8 @@ library(shiny)
 library(dplyr)
 
 # source("Summary info.R")
+# source("housing_price_plot.R")
+
 #Generates an interactive User Interface with input panels
 shinyUI(fluidPage(
   titlePanel("Housing in Seattle"), 
@@ -38,6 +40,7 @@ shinyUI(fluidPage(
     br(), 
     p("What about building quality? Enter a zip code to see average building quality on a scale from 1 to 10"),
     textInput("zip_code_qual", "Zip Code:", value = 98178, placeholder = "ex. 98178"),
+    textOutput('qual'),
     textOutput('qual_error_msg'),
     
     br(), 

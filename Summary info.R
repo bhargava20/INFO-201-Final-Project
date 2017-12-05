@@ -4,8 +4,8 @@ library("lubridate")
 # setwd("~/../Desktop/INFO 201/Final/INFO-201-Final-Project")
 
 # Reading the csv files
-file <- read.csv("data/kc_house_data.csv.bz2", stringsAsFactors = FALSE)
-file2 <- read.csv("crime_data.csv", stringsAsFactors = FALSE)
+# file <- read.csv("data/kc_house_data.csv.bz2", stringsAsFactors = FALSE)
+# file2 <- read.csv("crime_data.csv", stringsAsFactors = FALSE)
 
 #preparation for the following variables
 file <- arrange(file, -yr_built)

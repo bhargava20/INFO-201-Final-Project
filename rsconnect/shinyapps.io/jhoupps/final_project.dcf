@@ -5,8 +5,6 @@ account: jhoupps
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 244390
-bundleId: 1115727
+bundleId: 1115847
 url: https://jhoupps.shinyapps.io/final_project/
-when: 1512449637.50989
-asMultiple: FALSE
-asStatic: FALSE
+when: 1512454462.4714
