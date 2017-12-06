@@ -1,8 +1,10 @@
 #Loads necessary libraries
 library(shiny)
 library(ggplot2)
+library(plotly)
 source("housing_price_plot.R")
 source("Summary info.R")
+source("crime_plot.R")
 
 #Processes data in such a way to enable visualization in ui.R
 shinyServer(function(input, output){
@@ -85,5 +87,24 @@ shinyServer(function(input, output){
       paste0("Sorry, data is not available for houses constructed in the year ", input$bbf_year, " and sold from May 2014 to May 2015 in King County")
     }
   })
+  
+  #Generates a plot
+  output$crime_plot <- renderPlot({
+    pc <- plot_crime(housing.data, crime.data, input$zip_code_crime)
+    
+    print(pc)
+  })
+  
+  output$crime_plot_error_msg <- renderText({
+    pc <- plot_crime(housing.data, crime.data, input$zip_code_crime)
+    pcu_data <- pc$data$Crime.frequency %>% unique()
+    
+    if(length(pcu_data) == 1 & pcu_data[1] == 0){
+      paste0("Sorry, we have no data on ", input$zip_code_crime)
+    } else {
+      ""
+    }
+    
+  })  
   
 })

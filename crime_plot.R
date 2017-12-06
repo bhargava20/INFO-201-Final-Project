@@ -4,7 +4,7 @@ library(dplyr)
 library(data.table)
 
 # Reading relevant data
-crime.data <- fread("crime_data.csv") %>%
+crime.data <- fread("data/Seattle_Police_Department_911_Incident_Response.csv") %>%
               select(`Event Clearance Date`, Longitude, Latitude)
 housing.data <- fread("data/kc_house_data.csv") %>% select(zipcode, lat, long)
 
